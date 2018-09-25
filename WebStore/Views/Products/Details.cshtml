@@ -1,0 +1,64 @@
+﻿@model WebStore.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <h4>Продукт</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Наименование
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Описание
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    <h3 class="text-center">Список магазинов:</h3>
+    <div class="col-sm-12">
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+                <th class="col-sm-3">
+                    Наименование
+                </th>
+                <th class=" col-sm-6">
+                    Адрес
+                </th>
+                <th class=" col-sm-2">
+                    График работы
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Shops)
+            {
+                <tr>
+                    <td> @Html.ActionLink(@item.Name, "Details", "Shops", new { id = item.Id }, null)</td>
+
+                    <td> @item.Address</td>
+
+                    <td> @item.StartTime.ToShortTimeString() - @item.EndTime.ToShortTimeString() </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+
+    <div class="btn-md col-md-offset-1 col-md-12">
+        <button type="button" class="btn">
+            @Html.ActionLink("Вернуться", "Index")
+        </button>
+    </div>
+
+</div>

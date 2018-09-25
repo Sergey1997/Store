@@ -1,0 +1,14 @@
+﻿@model WebStore.Models.Product
+ 
+<h3>Все магазины товара : @Model.Name</h3>
+<ul>
+    @foreach (var item in Model.Shops)
+    {
+        <li>@item.Name</li>
+        <li>@item.Address</li>
+        <li>@item.StartTime</li>
+        <li>@item.EndTime</li>
+    }
+</ul>
+
+@Html.DisplayForModel()

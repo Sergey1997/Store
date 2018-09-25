@@ -1,0 +1,51 @@
+﻿@model WebStore.Models.Shop
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы действительно хотите удалить магазин?</h3>
+<div>
+    <h4>Магазин</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Наименование
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Адрес
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            График работы
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime) - @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn">
+                @Html.ActionLink("Вернуться", "Index")
+            </button>
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+        </div>
+    </div>
+    }
+</div>
